@@ -36,6 +36,10 @@ pipeline {
 
             
         }
+      stage('Deploy BackEnd')
+		steps{
+		    deploy adapters: [tomcat8(credentialsId: 'toncat_user_login', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks-backend', war: 'target\\tasks-backend.war'
+		}
 
 
     }

@@ -82,6 +82,16 @@ pipeline {
           }
 
       }
+      stage('Health Check Deploy Prod'){
+          steps {
+              dir('health check'){
+                  git credentialsId: 'github_login', url: 'https://github.com/Josue-07/task-functional-test'
+                  bat 'mnv verify -Dskip.surefire.tests'
+              }
+
+          }
+      }
+
 
       
 
